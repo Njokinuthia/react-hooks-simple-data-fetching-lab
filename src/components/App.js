@@ -10,28 +10,20 @@ function App(){
     .then(resp=>resp.json())
     .then(data=>{
       console.log(data)
-      setDogData(data)
+      setDogData(data.message)
     })
 
-    if(dogData.length===0){
-      return "Loading.."
-    }
+   
   },[])  
 
-  const dogUrl = dogData.message
-
-  function Loading(){
+  if(dogData.length===0){
     return(<p>Loading...</p>)
-  }
-
-  
+  }  
 
   return(
     <>
     My dog goes here
-    {dogData.length===0?<Loading/>:<img src={dogUrl} alt="A Random Dog"></img>}
-    
-    
+    <img src={dogData} alt="A Random Dog"></img>      
     </>
   )
 
